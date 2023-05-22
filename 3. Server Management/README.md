@@ -1,5 +1,9 @@
 # Server Management
 
+## SSH
+
+pada saat provisioning dengan menggunakan terraform saya sudah menyematkan ssh public key pada setiap server
+
 ```
 terraform {
   required_providers {
@@ -96,54 +100,19 @@ resource "idcloudhost_floating_ip" "ip-cicd" {
 }
 ```
 
+![image](/3.%20Server%20Management/media/0.png)
 
+![image](/3.%20Server%20Management/media/1.png)
 
-`/etc/ssh/sshd_config` 
+![image](/3.%20Server%20Management/media/2.png)
+
+file config `/etc/ssh/sshd_config` untuk disable password login
 
 "PasswordAuthentication no"
 
+![image](/3.%20Server%20Management/media/3.png)
 
-[global]
-
-`~/.ssh/config`
-
-```
-Host appserver
-    HostName 103.37.125.112
-
-Host gateway
-    HostName 103.37.125.189
-
-Host cicd
-    HostName 103.37.125.86
-
-Host monitoring
-    HostName 103.37.124.52
-
-Host *
-    User server
-```
-
-[gateway]
-
-`~/.ssh/config`
-
-```
-Host appserver
-    HostName 10.36.116.115
-
-Host cicd
-    HostName 10.36.116.41
-
-Host monitoring
-    HostName 10.36.116.135
-
-Host *
-    User nafis
-```
-
-
-`one-ssh.yml`
+file config `one-ssh.yml` saya buat agar semua server hanya menggunakan satu ssh dengan ansible-playbook
 
 ```
 ---
@@ -161,7 +130,40 @@ Host *
         dest: /home/nafis/.ssh
 ```
 
-`firewall.yml`
+![image](/3.%20Server%20Management/media/5.png)
+
+disini saya membuat sistem one gateway dengan membuat file config ssh `~/.ssh/config`, akses semua server melalui perantara server gateway
+
+```
+host gateway
+    HostName 103.37.125.189
+    User nafis
+
+host appserver
+    Hostname 10.36.116.115
+    User nafis
+    ProxyCommand ssh gateway -W %h:%p
+    IdentityFile /home/server/.ssh/privatekey
+
+host monitor
+    Hostname 10.36.116.115.135
+    User nafis
+    ProxyCommand ssh gateway -W %h:%p
+    IdentityFile /home/server/.ssh/privatekey
+
+host cicd
+    Hostname 10.36.116.115.41
+    User nafis
+    ProxyCommand ssh gateway -W %h:%p
+    IdentityFile /home/server/.ssh/privatekey
+```
+
+![image](/3.%20Server%20Management/media/7.png)
+
+## Firewall
+
+
+file config `firewall.yml` untuk instalasi ufw pada server gateway
 
 ```
 ---
@@ -198,3 +200,7 @@ Host *
         state: reloaded
         policy: allow
 ```
+
+![image](/3.%20Server%20Management/media/8.png)
+
+![image](/3.%20Server%20Management/media/9.png)
