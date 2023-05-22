@@ -109,10 +109,37 @@ terraform init
 
 ![image](/1.%20Provisioning/media/1.png)
 
+perintah dibawah ini saya gunakan untuk melihat spesifikasi server yang akan di provisioning
+
+```
+terraform plan
+```
+
+![image](/1.%20Provisioning/media/2.png)
+
+![image](/1.%20Provisioning/media/3.png)
+
+jika sudah sesuai gunakan perintah dibawah ini
+
+```
+terraform apply
+```
+
+![image](/1.%20Provisioning/media/4.png)
+
+![image](/1.%20Provisioning/media/5.png)
+
+![image](/1.%20Provisioning/media/6.png)
+
+![image](/1.%20Provisioning/media/8.png)
+
+![image](/1.%20Provisioning/media/9.png)
+
+![image](/1.%20Provisioning/media/10.png)
+
 # Server Configuration using Ansible
 
-`ansible.cfg`
-
+disini saya membuat file config `ansible.cfg` untuk konfigurasi dari ansible
 
 ```
 [defaults]
@@ -122,7 +149,7 @@ host_key_checking = false
 interpreter_python = auto_silent
 ```
 
-`Inventory`
+lalu file config `Inventory` untuk library dari server yang akan dikonfigurasi dengan ansible
 
 ```
 [appserver]
@@ -142,7 +169,13 @@ ansible_user="nafis"
 ansible_pythone_interpreter=/usr/bin/python3
 ```
 
-`install-docker.yml`
+selanjutnya instalasi konfigurasi server akan menggunakan perintah dibawah ini
+
+```
+ansible-playbook file-name.yml
+```
+
+file config `install-docker.yml` untuk instalasi docker pada semua server
 
 ```
 ---
@@ -204,8 +237,11 @@ ansible_pythone_interpreter=/usr/bin/python3
         append: yes
 ```
 
-`rproxy.conf`
+![image](/1.%20Provisioning/media/11.png)
 
+![image](/1.%20Provisioning/media/12.png)
+
+saya buat file config nginx `rproxy.conf` untuk kebutuhan reverse proxy
 
 ```
 server { 
@@ -268,7 +304,7 @@ server {
 
 ```
 
-`install-nginx.yml`
+file config `install-nginx.yml` untuk instalasi nginx pada server gateway
 
 ```
 ---
@@ -297,7 +333,13 @@ server {
         state: reloaded
 ```
 
-`install-jenkins.yml`
+![image](/1.%20Provisioning/media/13.png)
+
+![image](/1.%20Provisioning/media/14.png)
+
+![image](/1.%20Provisioning/media/15.png)
+
+file config `install-jenkins.yml` untuk instalasi jenkins pada server cicd
 
 ```
 ---
@@ -316,7 +358,13 @@ server {
         restart_policy: unless-stopped
 ```
 
-`install-node.yml`
+![image](/1.%20Provisioning/media/16.png)
+
+![image](/1.%20Provisioning/media/17.png)
+
+![image](/1.%20Provisioning/media/18.png)
+
+file config `install-node.yml` untuk instalasi node-exporter pada semua server
 
 ```
 ---
@@ -333,7 +381,11 @@ server {
         restart_policy: unless-stopped
 ```
 
-`install-prometheus.yml`
+![image](/1.%20Provisioning/media/19.png)
+
+![image](/1.%20Provisioning/media/20.png)
+
+file config `install-prometheus.yml` untuk instalasi prometheus pada server monitoring
 
 ```
 ---
@@ -365,7 +417,11 @@ server {
           - ~/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
 ```
 
-`install-grafana.yml`
+![image](/1.%20Provisioning/media/21.png)
+
+![image](/1.%20Provisioning/media/22.png)
+
+file config `install-grafana.yml` untuk instalasi grafana pada server monitoring
 
 ```
 ---
@@ -389,3 +445,6 @@ server {
           - ~/grafana:/var/lib/grafana
         user: root
 ```
+
+![image](/1.%20Provisioning/media/23.png)
+![image](/1.%20Provisioning/media/24.png)
