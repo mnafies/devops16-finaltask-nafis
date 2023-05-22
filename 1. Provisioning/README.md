@@ -1,7 +1,9 @@
 
 # Provision servers using Terraform
 
-`main.tf`
+
+
+Pertama-tama saya membuat file config `main.tf` untuk provision idch server menggunakan terraform
 
 ```
 terraform {
@@ -98,6 +100,14 @@ resource "idcloudhost_floating_ip" "ip-cicd" {
     assigned_to = idcloudhost_vm.nafis-cicd.id
 }
 ```
+
+selanjutnya saya melakukan inisiasi pada folder terraform dengan perintah :
+
+```
+terraform init
+```
+
+![image](/1.%20Provisioning/media/1.png)
 
 # Server Configuration using Ansible
 
