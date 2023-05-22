@@ -103,7 +103,7 @@ sudo certbot certonly \
 --email muhamadnafis999@gmail.com \
 --server https://acme-v02.api.letsencrypt.org/directory \
 --agree-tos \
--d *.nafis.studentdumbways.my.id
+-d *.studentdumbways.my.id
 
 
 
