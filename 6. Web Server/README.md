@@ -1,72 +1,12 @@
 # Web Server
 
+## Cloudflare
+
+![image](/6.%20Web%20Server/media/1.png)
 
 ## NGINX 
 
-`reverse proxy conf`
-
-```
-server { 
-    server_name node-appserver.nafis.studentdumbways.my.id; 
-    
-    location / { 
-             proxy_pass http://103.37.125.112:9100;
-    }
-}
-server { 
-    server_name node-gateway.nafis.studentdumbways.my.id; 
-    
-    location / { 
-             proxy_pass http://103.37.125.189:9100;
-    }
-}
-server { 
-    server_name node-cicd.nafis.studentdumbways.my.id; 
-    
-    location / { 
-             proxy_pass http://103.37.125.86:9100;
-    }
-}
-server { 
-    server_name node-monitoring.nafis.studentdumbways.my.id; 
-    
-    location / { 
-             proxy_pass http://103.37.124.52:9100;
-    }
-}
-server { 
-    server_name prom.nafis.studentdumbways.my.id; 
-    
-    location / { 
-             proxy_pass http://103.37.124.52:9090;
-    }
-}
-server { 
-    server_name dashboard.nafis.studentdumbways.my.id; 
-    
-    location / { 
-             proxy_set_header Host dashboard.nafis.studentdumbways.my.id;
-             proxy_pass http://103.37.124.52:3000;
-    }
-}
-server { 
-    server_name cicd.studentdumbways.my.id; 
-    
-    location / { 
-             proxy_pass http://103.37.125.86:8080;
-    }
-}
-server { 
-    server_name nafis.studentdumbways.my.id; 
-    
-    location / { 
-             proxy_pass http://103.37.125.112:3000;
-    }
-}
-
-```
-
-`install-nginx.yml`
+file config `install-nginx.yml` untuk isntalasi nginx pada server gateway
 
 ```
 ---
@@ -94,8 +34,29 @@ server {
         name: nginx
         state: reloaded
 ```
+![image](/6.%20Web%20Server/media/2.png)
 
-## Certbot using wildcard
+## SSL Certbot using wildcard
+
+saya malakukan instalasi certbot menggunakan instruksi dari [certbot.eff.org](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal&tab=wildcard)
+
+![image](/6.%20Web%20Server/media/3.png)
+
+![image](/6.%20Web%20Server/media/4.png)
+
+```
+sudo certbot certonly \
+--manual \
+--preferred-challenges=dns \
+--email muhamadnafis999@gmail.com \
+--server https://acme-v02.api.letsencrypt.org/directory \
+--agree-tos \
+-d *.studentdumbways.my.id
+```
+
+![image](/6.%20Web%20Server/media/5.png)
+
+![image](/6.%20Web%20Server/media/6.png)
 
 sudo certbot certonly \
 --manual \
@@ -106,4 +67,15 @@ sudo certbot certonly \
 -d *.studentdumbways.my.id
 
 
+![image](/6.%20Web%20Server/media/7.png)
+
+![image](/6.%20Web%20Server/media/8.png)
+
+![image](/6.%20Web%20Server/media/13.png)
+
+![image](/6.%20Web%20Server/media/9.png)
+
+![image](/6.%20Web%20Server/media/10.png)
+
+![image](/6.%20Web%20Server/media/11.png)
 
