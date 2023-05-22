@@ -44,15 +44,13 @@ saya malakukan instalasi certbot menggunakan instruksi dari [certbot.eff.org](ht
 
 ![image](/6.%20Web%20Server/media/4.png)
 
-```
-sudo certbot certonly \
+```sudo certbot certonly \
 --manual \
 --preferred-challenges=dns \
 --email muhamadnafis999@gmail.com \
 --server https://acme-v02.api.letsencrypt.org/directory \
 --agree-tos \
--d *.studentdumbways.my.id
-```
+-d *.studentdumbways.my.id```
 
 ![image](/6.%20Web%20Server/media/5.png)
 
