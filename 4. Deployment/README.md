@@ -175,6 +175,7 @@ docker build -t nikymn/fe-dumbmerch-production:latest .
 file config `Dockerfile` untuk kebutuhan membuat docker image `nikymn/be-dumbmerch-production`
 
 ```
+#distroless
 FROM golang:1.18 as build
 
 WORKDIR /go/src/app
