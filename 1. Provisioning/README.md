@@ -16,7 +16,7 @@ terraform {
 }
 
 provider "idcloudhost" {
-    auth_token = "mTWvAHka6YmhUncBxKZyCpeL40C7Kyc0"
+    auth_token = " "
     region = "sgp01"
 }
 
@@ -29,8 +29,8 @@ resource "idcloudhost_vm" "nafis-appserver" {
     memory = 2048
     username = "nafis"
     initial_password = "Katasand1" 
-    billing_account_id = 1200157626 
-    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCbFhouYP76rswiBFhBlQVh7PaVbe7HHKvuFE/s/WCRJCfahLNU6XFwy2kZ3o4P7JYKwYjMaLGVH9NjUJln8dTNHgZRWFScK+O4sHIdjtdGlK6rAf6ok5O+AOsTe1oVVx1HsWFJLR1RpDwh64nfSeKdePP1gvPM2KhPb9mQ8RwmDQOO39e1ne6uQViwKFkKfuqgaVkXFABF7K5mA4jyvlGsJgzsefH/srjPILzsv0Teh2r+xTjUWPrPpPM9NVMwMmzAza7FjZOAyxHcM+i2Mjtjvvv7MUcZ0fnit3pCLiJVXQ/YepI/GaW3aPJPYxh/PlTCr2UQ1b7VUybDDcg7VK5LhIvAEkn7ib8MDn7iwAddxMD8/dFKCmToDtRduIZfe8mJZOTLCZiVi/AehXqg/xCI71wNQpasgh8mucnu83V23gAkQxAtSs6V2+McwVVuIdEO9oLAcXp3Z7Gmh5KXhrn4vuAZkssYSENvTRMZoC0Ij7G2gNMCqQRFpylTPriAIps= ubuntu@primary" 
+    billing_account_id =  
+    public_key = " " 
     backup = false
 }
 
@@ -43,8 +43,8 @@ resource "idcloudhost_vm" "nafis-gateway" {
     memory = 1024
     username = "nafis"
     initial_password = "Katasand1" 
-    billing_account_id = 1200157626 
-    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCbFhouYP76rswiBFhBlQVh7PaVbe7HHKvuFE/s/WCRJCfahLNU6XFwy2kZ3o4P7JYKwYjMaLGVH9NjUJln8dTNHgZRWFScK+O4sHIdjtdGlK6rAf6ok5O+AOsTe1oVVx1HsWFJLR1RpDwh64nfSeKdePP1gvPM2KhPb9mQ8RwmDQOO39e1ne6uQViwKFkKfuqgaVkXFABF7K5mA4jyvlGsJgzsefH/srjPILzsv0Teh2r+xTjUWPrPpPM9NVMwMmzAza7FjZOAyxHcM+i2Mjtjvvv7MUcZ0fnit3pCLiJVXQ/YepI/GaW3aPJPYxh/PlTCr2UQ1b7VUybDDcg7VK5LhIvAEkn7ib8MDn7iwAddxMD8/dFKCmToDtRduIZfe8mJZOTLCZiVi/AehXqg/xCI71wNQpasgh8mucnu83V23gAkQxAtSs6V2+McwVVuIdEO9oLAcXp3Z7Gmh5KXhrn4vuAZkssYSENvTRMZoC0Ij7G2gNMCqQRFpylTPriAIps= ubuntu@primary" 
+    billing_account_id =  
+    public_key = " " 
     backup = false
 }
 
@@ -57,8 +57,8 @@ resource "idcloudhost_vm" "nafis-monitoring" {
     memory = 2048
     username = "nafis"
     initial_password = "Katasand1" 
-    billing_account_id = 1200157626 
-    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCbFhouYP76rswiBFhBlQVh7PaVbe7HHKvuFE/s/WCRJCfahLNU6XFwy2kZ3o4P7JYKwYjMaLGVH9NjUJln8dTNHgZRWFScK+O4sHIdjtdGlK6rAf6ok5O+AOsTe1oVVx1HsWFJLR1RpDwh64nfSeKdePP1gvPM2KhPb9mQ8RwmDQOO39e1ne6uQViwKFkKfuqgaVkXFABF7K5mA4jyvlGsJgzsefH/srjPILzsv0Teh2r+xTjUWPrPpPM9NVMwMmzAza7FjZOAyxHcM+i2Mjtjvvv7MUcZ0fnit3pCLiJVXQ/YepI/GaW3aPJPYxh/PlTCr2UQ1b7VUybDDcg7VK5LhIvAEkn7ib8MDn7iwAddxMD8/dFKCmToDtRduIZfe8mJZOTLCZiVi/AehXqg/xCI71wNQpasgh8mucnu83V23gAkQxAtSs6V2+McwVVuIdEO9oLAcXp3Z7Gmh5KXhrn4vuAZkssYSENvTRMZoC0Ij7G2gNMCqQRFpylTPriAIps= ubuntu@primary" 
+    billing_account_id =  
+    public_key = " " 
     backup = false
 }
 
@@ -71,32 +71,32 @@ resource "idcloudhost_vm" "nafis-cicd" {
     memory = 2048
     username = "nafis"
     initial_password = "Katasand1" 
-    billing_account_id = 1200157626 
-    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCbFhouYP76rswiBFhBlQVh7PaVbe7HHKvuFE/s/WCRJCfahLNU6XFwy2kZ3o4P7JYKwYjMaLGVH9NjUJln8dTNHgZRWFScK+O4sHIdjtdGlK6rAf6ok5O+AOsTe1oVVx1HsWFJLR1RpDwh64nfSeKdePP1gvPM2KhPb9mQ8RwmDQOO39e1ne6uQViwKFkKfuqgaVkXFABF7K5mA4jyvlGsJgzsefH/srjPILzsv0Teh2r+xTjUWPrPpPM9NVMwMmzAza7FjZOAyxHcM+i2Mjtjvvv7MUcZ0fnit3pCLiJVXQ/YepI/GaW3aPJPYxh/PlTCr2UQ1b7VUybDDcg7VK5LhIvAEkn7ib8MDn7iwAddxMD8/dFKCmToDtRduIZfe8mJZOTLCZiVi/AehXqg/xCI71wNQpasgh8mucnu83V23gAkQxAtSs6V2+McwVVuIdEO9oLAcXp3Z7Gmh5KXhrn4vuAZkssYSENvTRMZoC0Ij7G2gNMCqQRFpylTPriAIps= ubuntu@primary" 
+    billing_account_id =  
+    public_key = " " 
     backup = false
 }
 
 resource "idcloudhost_floating_ip" "ip-appserver" {
     name = "nafis-appserver"
-    billing_account_id = 1200157626 
+    billing_account_id =  
     assigned_to = idcloudhost_vm.nafis-appserver.id
 }
 
 resource "idcloudhost_floating_ip" "ip-gateway" {
     name = "nafis-gateway"
-    billing_account_id = 1200157626 
+    billing_account_id =  
     assigned_to = idcloudhost_vm.nafis-gateway.id
 }
 
 resource "idcloudhost_floating_ip" "ip-monitoring" {
     name = "nafis-monitoring"
-    billing_account_id = 1200157626 
+    billing_account_id =  
     assigned_to = idcloudhost_vm.nafis-monitoring.id
 }
 
 resource "idcloudhost_floating_ip" "ip-cicd" {
     name = "nafis-cicd"
-    billing_account_id = 1200157626 
+    billing_account_id =  
     assigned_to = idcloudhost_vm.nafis-cicd.id
 }
 ```
