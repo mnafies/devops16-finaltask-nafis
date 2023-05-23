@@ -155,7 +155,7 @@ WORKDIR /app
 COPY . .
 RUN npm install
 EXPOSE 3000
-CMD [ "npm", "start" ]
+CMD ["npx","serve","build","-l","3000"]
 ```
 
 kemudian saya buat docker image dengan perintah dibawah ini
