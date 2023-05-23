@@ -2,9 +2,11 @@
 
 ## Staging
 
-### frontend dumbmerch staging (A lightweight docker image)
+Pada branch staging saya membuat docker images sekecil mungkin dengan .dockerignore
 
-Pada branch staging saya membuat docker images sekecil mungkin dengan .dockerignore untuk node_modules
+tentunya saya sudah `git clone` pada repository github saya untuk frontend dan backend dumbmerch
+
+### frontend dumbmerch staging (A lightweight docker image)
 
 ```
 git clone git@github.com:nikymn/fe-dumbmerch.git
@@ -20,7 +22,9 @@ git clone git@github.com:nikymn/fe-dumbmerch.git
 **/node_modules/
 ```
 
-`Dockerfile`
+![image](/4.%20Deployment/media/2.png)
+
+file config `Dockerfile` untuk kebutuhan membuat docker image `nikymn/fe-dumbmerch-staging`
 
 ```
 FROM node:16-slim
@@ -31,9 +35,12 @@ EXPOSE 3000
 CMD [ "npm", "start" ]
 ```
 
+kemudian saya buat docker image dengan perintah dibawah ini
+
 ```
 docker build -t nikymn/fe-dumbmerch-staging:latest .
 ```
+![image](/4.%20Deployment/media/3.png)
 
 ### backend dumbmerch staging (A lightweight docker image)
 
@@ -42,6 +49,8 @@ git clone git@github.com:nikymn/be-dumbmerch.git
 ```
 
 `git checkout staging`
+
+![image](/4.%20Deployment/media/5.png)
 
 `.dockerignore`
 
@@ -54,7 +63,9 @@ git clone git@github.com:nikymn/be-dumbmerch.git
 env/*/work-*
 ```
 
-`Dockerfile`
+![image](/4.%20Deployment/media/6.png)
+
+file config `Dockerfile` untuk kebutuhan membuat docker image `nikymn/be-dumbmerch-staging`
 
 ```
 FROM golang:1.16-alpine
@@ -66,13 +77,17 @@ EXPOSE 5000
 CMD ["go", "run", "main.go"]
 ```
 
+kemudian saya buat docker image dengan perintah dibawah ini
+
 ```
 docker build -t nikymn/be-dumbmerch-staging:latest .
 ```
 
+![image](/4.%20Deployment/media/7.png)
+
 ### docker compose
 
-`docker-compose.yml`
+file config `docker-compose.yml` untuk kebutuhan docker compose
 
 ```
 version: "3.8"
@@ -106,18 +121,33 @@ services:
       - 3000:3000
 ```
 
+lalu saya jalankan docker compose dengan perintah dibawah ini
+
 ```
 docker compose up -d
 ```
 
+![image](/4.%20Deployment/media/8.png)
+
+![image](/4.%20Deployment/media/9.png)
+
+![image](/4.%20Deployment/media/10.png)
+
+![image](/4.%20Deployment/media/11.png)
 
 ## Production
+
+Pada branch staging saya membuat docker images yang sudah siap deploy
+
+tentunya saya sudah `git clone` pada repository github saya untuk frontend dan backend dumbmerch
 
 ### frontend dumbmerch 
 
 `git checkout production`
 
-`Dockerfile`
+![image](/4.%20Deployment/media/12.png)
+
+file config `Dockerfile` untuk kebutuhan membuat docker image `nikymn/fe-dumbmerch-production`
 
 ```
 FROM node:16-alpine
@@ -128,15 +158,21 @@ EXPOSE 3000
 CMD [ "npm", "start" ]
 ```
 
+kemudian saya buat docker image dengan perintah dibawah ini
+
 ```
 docker build -t nikymn/fe-dumbmerch-production:latest .
 ```
+
+![image](/4.%20Deployment/media/13.png)
 
 ### backend dumbmerch
 
 `git checkout production`
 
-`Dockerfile`
+![image](/4.%20Deployment/media/14.png)
+
+file config `Dockerfile` untuk kebutuhan membuat docker image `nikymn/be-dumbmerch-production`
 
 ```
 FROM golang:1.16-alpine
@@ -148,13 +184,17 @@ EXPOSE 5000
 CMD ["go", "run", "main.go"]
 ```
 
+kemudian saya buat docker image dengan perintah dibawah ini
+
 ```
 docker build -t nikymn/be-dumbmerch-production:latest .
 ```
 
+![image](/4.%20Deployment/media/15.png)
+
 ### docker compose
 
-`docker-compose.yml`
+file config `docker-compose.yml` untuk kebutuhan docker compose
 
 ```
 version: "3.8"
@@ -188,13 +228,17 @@ services:
       - 3000:3000
 ```
 
+lalu saya jalankan docker compose dengan perintah dibawah ini
+
 ```
 docker compose up -d
 ```
 
-# CICD
+![image](/4.%20Deployment/media/16.png)
 
-# Setup Jenkins
+![image](/4.%20Deployment/media/17.png)
+
+# CICD
 
 `Jenkinsfile` for frontend
 
@@ -360,3 +404,55 @@ pipeline {
     }
 }
 ```
+
+# Setup Jenkins
+
+Platform CI/CD yang saya pakai kali yaitu jenkins
+
+adapun instalasi yang saya lakukan sebagai berikut
+
+disini saya memilih install suggested plugin
+
+![image](/4.%20Deployment/media/18.png)
+
+![image](/4.%20Deployment/media/19.png)
+
+![image](/4.%20Deployment/media/20.png)
+
+tidak lupa setelah selesai saya menambahkan plugin ssh agent 
+
+![image](/4.%20Deployment/media/25.png)
+
+Kemudian untuk credentials saya menambahkan credential untuk server appserver saya dengan menambahkan ID, User dan ssh public key dari appserver
+
+![image](/4.%20Deployment/media/21.png)
+
+![image](/4.%20Deployment/media/22.png)
+
+![image](/4.%20Deployment/media/23.png)
+
+![image](/4.%20Deployment/media/24.png)
+
+Selanjutnya saya membuat pipeline untuk frontend dan backend 
+
+![image](/4.%20Deployment/media/26.png)
+
+![image](/4.%20Deployment/media/27.png)
+
+![image](/4.%20Deployment/media/28.png)
+
+![image](/4.%20Deployment/media/29.png)
+
+jika sudah Build Now untuk menjalankan CI/CD
+
+![image](/4.%20Deployment/media/30.png)
+
+## Result
+
+### CICD frontend dumbmerch
+
+![image](/4.%20Deployment/media/31.png)
+
+### CICD backend dumbmerch
+
+![image](/4.%20Deployment/media/32.png)
