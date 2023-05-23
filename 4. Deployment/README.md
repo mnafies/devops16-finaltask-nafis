@@ -175,13 +175,17 @@ docker build -t nikymn/fe-dumbmerch-production:latest .
 file config `Dockerfile` untuk kebutuhan membuat docker image `nikymn/be-dumbmerch-production`
 
 ```
-FROM golang:1.16-alpine
-RUN mkdir /app   
-COPY . /app   
-WORKDIR /app   
-RUN go get ./ && go build && go mod download
-EXPOSE 5000
-CMD ["go", "run", "main.go"]
+FROM golang:1.18 as build
+
+WORKDIR /go/src/app
+COPY . .
+
+RUN go mod download
+RUN CGO_ENABLED=0 go build -o /go/bin/app
+
+FROM gcr.io/distroless/static-debian11
+COPY --from=build /go/bin/app /
+CMD ["/app"]
 ```
 
 kemudian saya buat docker image dengan perintah dibawah ini
