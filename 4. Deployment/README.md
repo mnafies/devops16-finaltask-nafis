@@ -4,11 +4,15 @@
 
 ### frontend dumbmerch staging (A lightweight docker image)
 
+Pada branch staging saya membuat docker images sekecil mungkin dengan .dockerignore untuk node_modules
+
 ```
 git clone git@github.com:nikymn/fe-dumbmerch.git
 ```
 
 `git checkout staging`
+
+![image](/4.%20Deployment/media/1.png)
 
 `.dockerignore`
 
