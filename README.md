@@ -1,5 +1,5 @@
 # DevOps Capstone Project (Deployment Dumbmerch Web App)
-Dumbways Bootcamp Devops Engineer - Muhamad Nafis
+##### Dumbways Bootcamp Devops Engineer - Muhamad Nafis
 
 Here are some highlights of my qualifications and achievements:
 
@@ -9,7 +9,7 @@ Here are some highlights of my qualifications and achievements:
 - Collaborated closely with cross-functional teams, including developers and operations, to streamline processes and improve overall software delivery lifecycle.
 - Conducted extensive monitoring and logging practices, utilizing tools like Prometheus and Grafana, to proactively identify and resolve issues.
 
-![dumbmerch diagram](https://github.com/mnafies/devops16-finaltask-nafis/assets/52950376/b760debd-227b-4afd-b22a-a4073a8d7132)
+![dumbmerch diagram](https://github.com/mnafies/devops16-finaltask-nafis/assets/52950376/a31df199-02f4-437e-90c4-2cf9e76ccd4c)
 
 ## Results and Conclusions
 
